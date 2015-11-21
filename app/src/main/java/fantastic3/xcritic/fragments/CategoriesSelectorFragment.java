@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import fantastic3.xcritic.R;
@@ -21,10 +21,10 @@ import fantastic3.xcritic.activities.TvShowsActivity;
  */
 public class CategoriesSelectorFragment extends Fragment {
     View view;
-    Button btnMovies;
-    Button btnTvShows;
-    Button btnMusic;
-    Button btnGames;
+    RelativeLayout llMovies;
+    RelativeLayout llTvShows;
+    RelativeLayout llMusic;
+    RelativeLayout llGames;
 
     public static CategoriesSelectorFragment newInstance(Bundle args) {
         CategoriesSelectorFragment instance = new CategoriesSelectorFragment();
@@ -48,35 +48,35 @@ public class CategoriesSelectorFragment extends Fragment {
     }
 
     private void setupViews() {
-        btnMovies = (Button) view.findViewById(R.id.btnMovies);
-        btnTvShows = (Button) view.findViewById(R.id.btnTvShows);
-        btnMusic = (Button) view.findViewById(R.id.btnMusic);
-        btnGames = (Button) view.findViewById(R.id.btnGames);
+        llMovies = (RelativeLayout) view.findViewById(R.id.llMovies);
+        llTvShows = (RelativeLayout) view.findViewById(R.id.llTvShows);
+        llMusic = (RelativeLayout) view.findViewById(R.id.llMusic);
+        llGames = (RelativeLayout) view.findViewById(R.id.llGames);
     }
 
     private void setupListeners() {
-        btnMovies.setOnClickListener(new View.OnClickListener() {
+        llMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), getText(R.string.lblMovies), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), MoviesActivity.class));
             }
         });
-        btnTvShows.setOnClickListener(new View.OnClickListener() {
+        llTvShows.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), getText(R.string.lblTvShows), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), TvShowsActivity.class));
             }
         });
-        btnMusic.setOnClickListener(new View.OnClickListener() {
+        llMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), getText(R.string.lblMusic), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), MusicActivity.class));
             }
         });
-        btnGames.setOnClickListener(new View.OnClickListener() {
+        llGames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), getText(R.string.lblGames), Toast.LENGTH_SHORT).show();
