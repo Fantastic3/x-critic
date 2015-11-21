@@ -17,8 +17,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="New Button"
-                android:id="@+id/button" />
+                android:text="@string/lblMovies"
+                android:id="@+id/btnMovies" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -29,8 +29,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="New Button"
-                android:id="@+id/button2" />
+                android:text="@string/lblTvShows"
+                android:id="@+id/btnTvShows" />
         </LinearLayout>
     </LinearLayout>
 
@@ -48,8 +48,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="New Button"
-                android:id="@+id/button3" />
+                android:text="@string/lblMusic"
+                android:id="@+id/btnMusic" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -60,8 +60,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="New Button"
-                android:id="@+id/button4" />
+                android:text="@string/lblGames"
+                android:id="@+id/btnGames" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

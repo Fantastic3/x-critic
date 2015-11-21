@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Xcritic</string>
+    <string name="lblMovies">Movies</string>
+    <string name="lblTvShows">TV Shows</string>
+    <string name="lblMusic">Music</string>
+    <string name="lblGames">Games</string>
 </resources>
