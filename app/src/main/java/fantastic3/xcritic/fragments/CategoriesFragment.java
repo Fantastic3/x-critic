@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import com.astuetz.PagerSlidingTabStrip;
 
 import fantastic3.xcritic.R;
-import fantastic3.xcritic.adapters.FragmentPagerAdapter;
+import fantastic3.xcritic.adapters.CategoriesFragmentPagerAdapter;
 
 /**
  * Created by jpodlech on 11/21/15.
@@ -47,32 +47,74 @@ public class CategoriesFragment extends Fragment {
         return view;
     }
 
-    public void setup() {
-        setupIntent();
-        setupViews();
-        setupAdapters();
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         setupTab();
     }
 
-    public void setupIntent() {
+    private void setup() {
+        setupIntent();
+        setupViews();
+        setupAdapters();
+        setupListeners();
+        setupTab();
+    }
+
+    private void setupIntent() {
         i = getActivity().getIntent();
     }
 
-    public void setupViews() {
+    private void setupViews() {
         pager = (ViewPager) view.findViewById(R.id.pager);
         tabsStrip = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
     }
 
-    public void setupAdapters() {
-        pager.setAdapter(new FragmentPagerAdapter(getActivity().getSupportFragmentManager()));
+    private void setupAdapters() {
+        pager.setAdapter(new CategoriesFragmentPagerAdapter(getActivity().getSupportFragmentManager()));
         tabsStrip.setViewPager(pager);
     }
 
-    public void setupTab() {
+    private void setupListeners() {
+        tabsStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                setTabBackground(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+    }
+
+    private void setupTab() {
         selectedTabId = i.getIntExtra(
                 ID_TAB_ID,
                 DEFAULT_TAB_ID
         );
         pager.setCurrentItem(selectedTabId);
+        setTabBackground(selectedTabId);
+    }
+
+    private void setTabBackground(Integer position) {
+        switch(position) {
+            case 0:
+                tabsStrip.setBackgroundColor(getResources().getColor(R.color.colorMovies));
+                break;
+            case 1:
+                tabsStrip.setBackgroundColor(getResources().getColor(R.color.colorTvShows));
+                break;
+            case 2:
+                tabsStrip.setBackgroundColor(getResources().getColor(R.color.colorMusic));
+                break;
+            case 3:
+                tabsStrip.setBackgroundColor(getResources().getColor(R.color.colorGames));
+                break;
+        }
     }
 }

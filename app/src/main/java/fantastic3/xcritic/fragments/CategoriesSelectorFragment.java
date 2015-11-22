@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 
 import fantastic3.xcritic.R;
 import fantastic3.xcritic.activities.CategoriesActivity;
-import fantastic3.xcritic.adapters.FragmentPagerAdapter;
+import fantastic3.xcritic.adapters.CategoriesFragmentPagerAdapter;
 
 /**
  * Created by jpodlech on 11/21/15.
@@ -83,7 +83,7 @@ public class CategoriesSelectorFragment extends Fragment {
     private void startActivityForCategory(String key) {
         i.putExtra(
                 CategoriesFragment.ID_TAB_ID,
-                FragmentPagerAdapter.tabKeys.indexOf(key)
+                CategoriesFragmentPagerAdapter.tabKeys.indexOf(key)
         );
         startActivity(i);
     }

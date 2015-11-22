@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import fantastic3.xcritic.R;
 
@@ -14,6 +15,7 @@ import fantastic3.xcritic.R;
  */
 public class MoviesFragment extends Fragment {
     private View view;
+    private ListView lvMovies;
 
     public static MoviesFragment newInstance(Bundle args) {
         MoviesFragment instance = new MoviesFragment();
@@ -32,6 +34,10 @@ public class MoviesFragment extends Fragment {
     }
 
     private void setup() {
+        setupViews();
+    }
 
+    private void setupViews() {
+        lvMovies = (ListView) view.findViewById(R.id.lvMovies);
     }
 }

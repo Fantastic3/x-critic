@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import fantastic3.xcritic.R;
 
@@ -14,6 +15,7 @@ import fantastic3.xcritic.R;
  */
 public class TvShowsFragment extends Fragment {
     private View view;
+    private ListView lvTvShows;
 
     public static TvShowsFragment newInstance(Bundle args) {
         TvShowsFragment instance = new TvShowsFragment();
@@ -32,6 +34,10 @@ public class TvShowsFragment extends Fragment {
     }
 
     private void setup() {
+        setupViews();
+    }
 
+    private void setupViews() {
+        lvTvShows = (ListView) view.findViewById(R.id.lvTvShows);
     }
 }
