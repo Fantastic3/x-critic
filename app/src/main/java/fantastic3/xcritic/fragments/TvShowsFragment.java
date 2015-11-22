@@ -13,7 +13,7 @@ import fantastic3.xcritic.R;
  * Created by jpodlech on 11/21/15.
  */
 public class TvShowsFragment extends Fragment {
-    View view;
+    private View view;
 
     public static TvShowsFragment newInstance(Bundle args) {
         TvShowsFragment instance = new TvShowsFragment();

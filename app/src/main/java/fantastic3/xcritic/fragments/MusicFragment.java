@@ -13,7 +13,7 @@ import fantastic3.xcritic.R;
  * Created by jpodlech on 11/21/15.
  */
 public class MusicFragment extends Fragment {
-    View view;
+    private View view;
 
     public static MusicFragment newInstance(Bundle args) {
         MusicFragment instance = new MusicFragment();

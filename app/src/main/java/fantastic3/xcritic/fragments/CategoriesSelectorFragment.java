@@ -17,11 +17,12 @@ import fantastic3.xcritic.adapters.FragmentPagerAdapter;
  * Created by jpodlech on 11/21/15.
  */
 public class CategoriesSelectorFragment extends Fragment {
-    View view;
-    RelativeLayout llMovies;
-    RelativeLayout llTvShows;
-    RelativeLayout llMusic;
-    RelativeLayout llGames;
+    private View view;
+    private RelativeLayout llMovies;
+    private RelativeLayout llTvShows;
+    private RelativeLayout llMusic;
+    private RelativeLayout llGames;
+    private Intent i;
 
     public static CategoriesSelectorFragment newInstance(Bundle args) {
         CategoriesSelectorFragment instance = new CategoriesSelectorFragment();
@@ -52,46 +53,38 @@ public class CategoriesSelectorFragment extends Fragment {
     }
 
     private void setupListeners() {
-        final Intent i = new Intent(getActivity(), CategoriesActivity.class);
+        i = new Intent(getActivity(), CategoriesActivity.class);
         llMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i.putExtra(
-                        CategoriesActivity.ID_TAB_ID,
-                        FragmentPagerAdapter.tabKeys.indexOf(CategoriesActivity.ID_MOVIES)
-                );
-                startActivity(i);
+                startActivityForCategory(CategoriesFragment.ID_MOVIES);
             }
         });
         llTvShows.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i.putExtra(
-                        CategoriesActivity.ID_TAB_ID,
-                        FragmentPagerAdapter.tabKeys.indexOf(CategoriesActivity.ID_TV_SHOWS)
-                );
-                startActivity(i);
+                startActivityForCategory(CategoriesFragment.ID_TV_SHOWS);
             }
         });
         llMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i.putExtra(
-                        CategoriesActivity.ID_TAB_ID,
-                        FragmentPagerAdapter.tabKeys.indexOf(CategoriesActivity.ID_MUSIC)
-                );
-                startActivity(i);
+                startActivityForCategory(CategoriesFragment.ID_MUSIC);
             }
         });
         llGames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i.putExtra(
-                        CategoriesActivity.ID_TAB_ID,
-                        FragmentPagerAdapter.tabKeys.indexOf(CategoriesActivity.ID_GAMES)
-                );
-                startActivity(i);
+                startActivityForCategory(CategoriesFragment.ID_GAMES);
             }
         });
+    }
+
+    private void startActivityForCategory(String key) {
+        i.putExtra(
+                CategoriesFragment.ID_TAB_ID,
+                FragmentPagerAdapter.tabKeys.indexOf(key)
+        );
+        startActivity(i);
     }
 }
