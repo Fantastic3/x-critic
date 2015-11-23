@@ -30,6 +30,13 @@ public class MusicFragment extends Fragment {
         if (savedInstanceState == null) {
             setup();
         }
+//        // TODO: setup models and adapters
+//        MetacriticMusic.fetchBy(null, null, null, new JsonHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
+//                Log.i("music", json.toString());
+//            }
+//        });
         return view;
     }
 

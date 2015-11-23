@@ -30,6 +30,13 @@ public class MoviesFragment extends Fragment {
         if (savedInstanceState == null) {
             setup();
         }
+//        // TODO: setup models and adapters
+//        MetacriticMovies.fetchBy(null, null, null, new JsonHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
+//                Log.i("movies", json.toString());
+//            }
+//        });
         return view;
     }
 

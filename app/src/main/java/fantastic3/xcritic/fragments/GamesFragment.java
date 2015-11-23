@@ -30,6 +30,13 @@ public class GamesFragment extends Fragment {
         if (savedInstanceState == null) {
             setup();
         }
+//        // TODO: setup models and adapters
+//        MetacriticGames.fetchBy("ps4", null, null, null, new JsonHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
+//                Log.i("games", json.toString());
+//            }
+//        });
         return view;
     }
 

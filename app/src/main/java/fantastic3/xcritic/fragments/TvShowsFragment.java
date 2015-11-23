@@ -30,6 +30,13 @@ public class TvShowsFragment extends Fragment {
         if (savedInstanceState == null) {
             setup();
         }
+//        // TODO: setup models and adapters
+//        MetacriticTvShows.fetchBy(null, null, null, new JsonHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
+//                Log.i("tv_shows", json.toString()); // NOT FOUND :(
+//            }
+//        });
         return view;
     }
 
