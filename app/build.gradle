@@ -27,4 +27,10 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'org.apache.commons:commons-lang3:3.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
+    provided "org.projectlombok:lombok:1.16.6"
+//    apt "org.projectlombok:lombok:1.16.6"
+//    compile 'com.github.fantastic3:metacritic-client:1.0'
 }
