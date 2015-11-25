@@ -18,20 +18,20 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 import fantastic3.xcritic.R;
-import fantastic3.xcritic.activities.GameActivity;
-import fantastic3.xcritic.adapters.GamesAdapter;
-import fantastic3.xcritic.clients.v2.metacritic.MetacriticGames;
-import fantastic3.xcritic.models.Game;
+import fantastic3.xcritic.activities.MusicActivity;
+import fantastic3.xcritic.adapters.MusicsAdapter;
+import fantastic3.xcritic.clients.v2.metacritic.MetacriticMusic;
+import fantastic3.xcritic.models.Music;
 
 /**
  * Created by jpodlech on 11/21/15.
  */
-public class GamesFragment extends Fragment {
+public class MusicsFragment extends Fragment {
     private View view;
-    private ListView lvGames;
+    private ListView lvMusics;
 
-    public static GamesFragment newInstance(Bundle args) {
-        GamesFragment instance = new GamesFragment();
+    public static MusicsFragment newInstance(Bundle args) {
+        MusicsFragment instance = new MusicsFragment();
         if (args != null) instance.setArguments(args);
         return instance;
     }
@@ -39,20 +39,20 @@ public class GamesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_tab_games, container, false);
+        view = inflater.inflate(R.layout.fragment_tab_music, container, false);
         if (savedInstanceState == null) {
             setup();
         }
-        MetacriticGames.fetchBy("ps4", null, null, null, new JsonHttpResponseHandler() {
+        MetacriticMusic.fetchBy(null, null, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                ArrayList<Game> games = Game.fromJSONResults(json);
-                GamesAdapter adapter = new GamesAdapter(getContext(), games);
-                lvGames.setAdapter(adapter);
-                lvGames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                ArrayList<Music> musics = Music.fromJSONResults(json);
+                MusicsAdapter adapter = new MusicsAdapter(getContext(), musics);
+                lvMusics.setAdapter(adapter);
+                lvMusics.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent i = new Intent(getActivity(), GameActivity.class);
+                        Intent i = new Intent(getActivity(), MusicActivity.class);
                         getActivity().startActivity(i);
                     }
                 });
@@ -66,6 +66,6 @@ public class GamesFragment extends Fragment {
     }
 
     private void setupViews() {
-        lvGames = (ListView) view.findViewById(R.id.lvGames);
+        lvMusics = (ListView) view.findViewById(R.id.lvMusic);
     }
 }

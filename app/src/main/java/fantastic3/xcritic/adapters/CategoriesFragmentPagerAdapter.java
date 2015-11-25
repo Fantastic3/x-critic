@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 import fantastic3.xcritic.fragments.GamesFragment;
 import fantastic3.xcritic.fragments.MoviesFragment;
-import fantastic3.xcritic.fragments.MusicFragment;
+import fantastic3.xcritic.fragments.MusicsFragment;
 import fantastic3.xcritic.fragments.TvShowsFragment;
 
 /**
@@ -40,7 +40,7 @@ public class CategoriesFragmentPagerAdapter extends FragmentPagerAdapter {
                 fragment = TvShowsFragment.newInstance(null);
                 break;
             case 2:
-                fragment = MusicFragment.newInstance(null);
+                fragment = MusicsFragment.newInstance(null);
                 break;
             case 3:
                 fragment = GamesFragment.newInstance(null);

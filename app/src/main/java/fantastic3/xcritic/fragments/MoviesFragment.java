@@ -1,11 +1,13 @@
 package fantastic3.xcritic.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 import fantastic3.xcritic.R;
+import fantastic3.xcritic.activities.MovieActivity;
 import fantastic3.xcritic.adapters.MoviesAdapter;
 import fantastic3.xcritic.clients.v2.metacritic.MetacriticMovies;
 import fantastic3.xcritic.models.Movie;
@@ -46,6 +49,13 @@ public class MoviesFragment extends Fragment {
                 ArrayList<Movie> movies = Movie.fromJSONResults(json);
                 MoviesAdapter adapter = new MoviesAdapter(getContext(), movies);
                 lvMovies.setAdapter(adapter);
+                lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent i = new Intent(getActivity(), MovieActivity.class);
+                        getActivity().startActivity(i);
+                    }
+                });
             }
         });
         return view;

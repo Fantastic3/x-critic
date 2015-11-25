@@ -16,6 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.CategoriesActivity"/>
+        <activity android:name=".activities.GameActivity"/>
+        <activity android:name=".activities.MovieActivity"/>
+        <activity android:name=".activities.MusicActivity"/>
+
     </application>
 
 </manifest>
