@@ -13,13 +13,15 @@ import fantastic3.xcritic.configs.v2.MetacriticConfig;
  * Created by jpodlech on 11/22/15.
  */
 public abstract class MetacriticBase extends AsyncHttpClient {
-    private static final Integer CONNECTION_TIMEOUT = 60;
+    private static final Integer CONNECTION_TIMEOUT = 60 * 1000;
+    private static final Integer TIMEOUT = 60 * 1000;
 
     protected static final AsyncHttpClient client = new AsyncHttpClient() {
         {
             addHeader("X-Mashape-Key", MetacriticConfig.API_KEY);
             addHeader("Accept", "application/json");
             setConnectTimeout(CONNECTION_TIMEOUT);
+            setTimeout(TIMEOUT);
         }
     };
 

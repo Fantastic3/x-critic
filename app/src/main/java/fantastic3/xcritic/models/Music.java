@@ -9,35 +9,31 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * Created by jpodlech on 11/23/15.
+ * Created by jpodlech on 11/24/15.
  */
-public class Movie {
+public class Music {
+    private String author;
     private String name;
     private String url;
     private String releaseDate;
     private String score;
-    private String rating;
-    private String cast;
+    private String userScore;
     private String genre;
-    private String userscore;
-    private String runtime;
     private String thumbnail;
 
-    public Movie(String name, String url, String releaseDate, String score, String rating, String cast, String genre, String userscore, String runtime, String thumbnail) {
+    public Music(String author, String name, String url, String releaseDate, String score, String userScore, String genre, String thumbnail) {
+        this.author = author;
         this.name = name;
         this.url = url;
         this.releaseDate = releaseDate;
         this.score = score;
-        this.rating = rating;
-        this.cast = cast;
+        this.userScore = userScore;
         this.genre = genre;
-        this.userscore = userscore;
-        this.runtime = runtime;
         this.thumbnail = thumbnail;
     }
 
-    public static ArrayList<Movie> fromJSONResults(JSONObject json) {
-        ArrayList<Movie> list = new ArrayList<Movie>();
+    public static ArrayList<Music> fromJSONResults(JSONObject json) {
+        ArrayList<Music> list = new ArrayList<Music>();
         JSONArray results = null;
         try {
             results = json.getJSONArray("results");
@@ -45,28 +41,26 @@ public class Movie {
                 list.add(fromJSONObject(results.getJSONObject(i)));
             }
         } catch (JSONException e) {
-            Log.e("Mo.fromJSONResults", e.getStackTrace().toString());
+            Log.e("Mu.fromJSONResults", e.getStackTrace().toString());
         }
         return list;
     }
 
-    public static Movie fromJSONObject(JSONObject json) {
-        Movie movie = null;
+    public static Music fromJSONObject(JSONObject json) {
+        Music music = null;
         try {
+            String author = json.getString("author");
             String name = json.getString("name");
             String url = json.getString("url");
             String releaseDate = json.getString("rlsdate");
             String score = json.getString("score");
-            String rating = json.getString("rating");
-            String cast = json.getString("cast");
-            String genre = json.getString("genre");
             String userscore = json.getString("avguserscore");
-            String runtime = json.getString("runtime");
+            String genre = json.getString("genre");
             String thumbnail = json.getString("thumbnail");
-            movie = new Movie(name, url, releaseDate, score, rating, cast, genre, userscore, runtime, thumbnail);
+            music = new Music(author, name, url, releaseDate, score, userscore, genre, thumbnail);
         } catch (JSONException e) {
             Log.e("M.fromJSONObject", e.getStackTrace().toString());
         }
-        return movie;
+        return music;
     }
 }
