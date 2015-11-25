@@ -32,11 +32,42 @@ public class Music {
         this.thumbnail = thumbnail;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public String getUserScore() {
+        return userScore;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
     public static ArrayList<Music> fromJSONResults(JSONObject json) {
         ArrayList<Music> list = new ArrayList<Music>();
-        JSONArray results = null;
         try {
-            results = json.getJSONArray("results");
+            JSONArray results = json.getJSONArray("results");
             for (Integer i = 0; i < results.length(); i++) {
                 list.add(fromJSONObject(results.getJSONObject(i)));
             }

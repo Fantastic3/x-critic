@@ -3,7 +3,6 @@ package fantastic3.xcritic.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 import fantastic3.xcritic.R;
+import fantastic3.xcritic.adapters.MusicsAdapter;
 import fantastic3.xcritic.clients.v2.metacritic.MetacriticMusic;
 import fantastic3.xcritic.models.Music;
 
@@ -25,7 +25,7 @@ import fantastic3.xcritic.models.Music;
  */
 public class MusicFragment extends Fragment {
     private View view;
-    private ListView lvMusic;
+    private ListView lvMusics;
 
     public static MusicFragment newInstance(Bundle args) {
         MusicFragment instance = new MusicFragment();
@@ -40,12 +40,12 @@ public class MusicFragment extends Fragment {
         if (savedInstanceState == null) {
             setup();
         }
-        // TODO: setup models and adapters
         MetacriticMusic.fetchBy(null, null, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
                 ArrayList<Music> musics = Music.fromJSONResults(json);
-                Log.i("music.size", String.valueOf(musics.size()));
+                MusicsAdapter adapter = new MusicsAdapter(getContext(), musics);
+                lvMusics.setAdapter(adapter);
             }
         });
         return view;
@@ -56,6 +56,6 @@ public class MusicFragment extends Fragment {
     }
 
     private void setupViews() {
-        lvMusic = (ListView) view.findViewById(R.id.lvMusic);
+        lvMusics = (ListView) view.findViewById(R.id.lvMusic);
     }
 }

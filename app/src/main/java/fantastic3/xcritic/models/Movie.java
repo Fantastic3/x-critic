@@ -36,11 +36,50 @@ public class Movie {
         this.thumbnail = thumbnail;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public String getCast() {
+        return cast;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getUserscore() {
+        return userscore;
+    }
+
+    public String getRuntime() {
+        return runtime;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
     public static ArrayList<Movie> fromJSONResults(JSONObject json) {
         ArrayList<Movie> list = new ArrayList<Movie>();
-        JSONArray results = null;
         try {
-            results = json.getJSONArray("results");
+            JSONArray results = json.getJSONArray("results");
             for (Integer i = 0; i < results.length(); i++) {
                 list.add(fromJSONObject(results.getJSONObject(i)));
             }

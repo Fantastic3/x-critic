@@ -3,7 +3,6 @@ package fantastic3.xcritic.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 import fantastic3.xcritic.R;
+import fantastic3.xcritic.adapters.MoviesAdapter;
 import fantastic3.xcritic.clients.v2.metacritic.MetacriticMovies;
 import fantastic3.xcritic.models.Movie;
 
@@ -40,12 +40,12 @@ public class MoviesFragment extends Fragment {
         if (savedInstanceState == null) {
             setup();
         }
-        // TODO: setup models and adapters
         MetacriticMovies.fetchBy(null, null, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
                 ArrayList<Movie> movies = Movie.fromJSONResults(json);
-                Log.i("movies.size", String.valueOf(movies.size()));
+                MoviesAdapter adapter = new MoviesAdapter(getContext(), movies);
+                lvMovies.setAdapter(adapter);
             }
         });
         return view;

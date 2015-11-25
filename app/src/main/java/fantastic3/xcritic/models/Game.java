@@ -28,13 +28,37 @@ public class Game {
         this.thumbnail = thumbnail;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
     public static ArrayList<Game> fromJSONResults(JSONObject json) {
         ArrayList<Game> list = new ArrayList<Game>();
-        JSONArray results = null;
         try {
-            results = json.getJSONArray("results");
+            JSONArray results = json.getJSONArray("results");
             for (Integer i = 0; i < results.length(); i++) {
-                list.add(fromJSONObject(results.getJSONObject(i)));
+                Game game = fromJSONObject(results.getJSONObject(i));
+                if (game != null) list.add(game);
             }
         } catch (JSONException e) {
             Log.e("G.fromJSONResults", e.getStackTrace().toString());
@@ -53,7 +77,7 @@ public class Game {
             String thumbnail = json.getString("thumbnail");
             game = new Game(name, url, releaseDate, rating, score, thumbnail);
         } catch (JSONException e) {
-            Log.e("M.fromJSONObject", e.getStackTrace().toString());
+            Log.e("G.fromJSONObject", e.getStackTrace().toString());
         }
         return game;
     }

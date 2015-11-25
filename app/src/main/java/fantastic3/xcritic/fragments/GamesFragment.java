@@ -3,7 +3,6 @@ package fantastic3.xcritic.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 import fantastic3.xcritic.R;
+import fantastic3.xcritic.adapters.GamesAdapter;
 import fantastic3.xcritic.clients.v2.metacritic.MetacriticGames;
 import fantastic3.xcritic.models.Game;
 
@@ -40,12 +40,12 @@ public class GamesFragment extends Fragment {
         if (savedInstanceState == null) {
             setup();
         }
-        // TODO: setup models and adapters
         MetacriticGames.fetchBy("ps4", null, null, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
                 ArrayList<Game> games = Game.fromJSONResults(json);
-                Log.i("games.size", String.valueOf(games.size()));
+                GamesAdapter adapter = new GamesAdapter(getContext(), games);
+                lvGames.setAdapter(adapter);
             }
         });
         return view;

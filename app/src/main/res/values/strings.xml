@@ -4,4 +4,5 @@
     <string name="lblTvShows">TV Shows</string>
     <string name="lblMusic">Music</string>
     <string name="lblGames">Games</string>
+    <string name="lblName">Name</string>
 </resources>
