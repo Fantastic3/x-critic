@@ -29,6 +29,7 @@ import fantastic3.xcritic.models.Movie;
 public class MoviesFragment extends Fragment {
     private View view;
     private ListView lvMovies;
+    private ArrayList<Movie> movies;
 
     public static MoviesFragment newInstance(Bundle args) {
         MoviesFragment instance = new MoviesFragment();
@@ -46,13 +47,14 @@ public class MoviesFragment extends Fragment {
         MetacriticMovies.fetchBy(null, null, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                ArrayList<Movie> movies = Movie.fromJSONResults(json);
+                movies = Movie.fromJSONResults(json);
                 MoviesAdapter adapter = new MoviesAdapter(getContext(), movies);
                 lvMovies.setAdapter(adapter);
                 lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(getActivity(), MovieActivity.class);
+                        i.putExtra("movie", movies.get(position));
                         getActivity().startActivity(i);
                     }
                 });

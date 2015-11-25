@@ -1,5 +1,7 @@
 package fantastic3.xcritic.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by jpodlech on 11/24/15.
  */
-public class Music {
+public class Music implements Parcelable {
     private String author;
     private String name;
     private String url;
@@ -94,4 +96,42 @@ public class Music {
         }
         return music;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.author);
+        dest.writeString(this.name);
+        dest.writeString(this.url);
+        dest.writeString(this.releaseDate);
+        dest.writeString(this.score);
+        dest.writeString(this.userScore);
+        dest.writeString(this.genre);
+        dest.writeString(this.thumbnail);
+    }
+
+    protected Music(Parcel in) {
+        this.author = in.readString();
+        this.name = in.readString();
+        this.url = in.readString();
+        this.releaseDate = in.readString();
+        this.score = in.readString();
+        this.userScore = in.readString();
+        this.genre = in.readString();
+        this.thumbnail = in.readString();
+    }
+
+    public static final Parcelable.Creator<Music> CREATOR = new Parcelable.Creator<Music>() {
+        public Music createFromParcel(Parcel source) {
+            return new Music(source);
+        }
+
+        public Music[] newArray(int size) {
+            return new Music[size];
+        }
+    };
 }

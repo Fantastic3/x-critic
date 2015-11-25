@@ -1,5 +1,7 @@
 package fantastic3.xcritic.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by jpodlech on 11/23/15.
  */
-public class Movie {
+public class Movie implements Parcelable {
     private String name;
     private String url;
     private String releaseDate;
@@ -108,4 +110,46 @@ public class Movie {
         }
         return movie;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeString(this.url);
+        dest.writeString(this.releaseDate);
+        dest.writeString(this.score);
+        dest.writeString(this.rating);
+        dest.writeString(this.cast);
+        dest.writeString(this.genre);
+        dest.writeString(this.userScore);
+        dest.writeString(this.runtime);
+        dest.writeString(this.thumbnail);
+    }
+
+    protected Movie(Parcel in) {
+        this.name = in.readString();
+        this.url = in.readString();
+        this.releaseDate = in.readString();
+        this.score = in.readString();
+        this.rating = in.readString();
+        this.cast = in.readString();
+        this.genre = in.readString();
+        this.userScore = in.readString();
+        this.runtime = in.readString();
+        this.thumbnail = in.readString();
+    }
+
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+        public Movie createFromParcel(Parcel source) {
+            return new Movie(source);
+        }
+
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 }

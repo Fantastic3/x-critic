@@ -5,7 +5,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import fantastic3.xcritic.R;
-import fantastic3.xcritic.fragments.MusicsFragment;
+import fantastic3.xcritic.fragments.MusicFragment;
+import fantastic3.xcritic.models.Music;
 
 /**
  * Created by jpodlech on 11/25/15.
@@ -23,12 +24,15 @@ public class MusicActivity extends AppCompatActivity {
 
     private void setup() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        setupCategoriesSelector(ft);
+        setupMusic(ft);
         ft.commit();
     }
 
-    private void setupCategoriesSelector(FragmentTransaction ft) {
-        MusicsFragment mf = MusicsFragment.newInstance(null);
+    private void setupMusic(FragmentTransaction ft) {
+        Bundle bundle = new Bundle();
+        Music music = getIntent().getExtras().getParcelable("music");
+        bundle.putParcelable("music", music);
+        MusicFragment mf = MusicFragment.newInstance(bundle);
         ft.replace(R.id.flGeneric, mf);
     }
 }

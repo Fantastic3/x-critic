@@ -29,6 +29,7 @@ import fantastic3.xcritic.models.Music;
 public class MusicsFragment extends Fragment {
     private View view;
     private ListView lvMusics;
+    private ArrayList<Music> musics;
 
     public static MusicsFragment newInstance(Bundle args) {
         MusicsFragment instance = new MusicsFragment();
@@ -46,13 +47,14 @@ public class MusicsFragment extends Fragment {
         MetacriticMusic.fetchBy(null, null, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                ArrayList<Music> musics = Music.fromJSONResults(json);
+                musics = Music.fromJSONResults(json);
                 MusicsAdapter adapter = new MusicsAdapter(getContext(), musics);
                 lvMusics.setAdapter(adapter);
                 lvMusics.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(getActivity(), MusicActivity.class);
+                        i.putExtra("music", musics.get(position));
                         getActivity().startActivity(i);
                     }
                 });

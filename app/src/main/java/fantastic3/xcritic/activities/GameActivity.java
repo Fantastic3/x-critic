@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import fantastic3.xcritic.R;
 import fantastic3.xcritic.fragments.GameFragment;
+import fantastic3.xcritic.models.Game;
 
 /**
  * Created by jpodlech on 11/25/15.
@@ -23,12 +24,15 @@ public class GameActivity extends AppCompatActivity {
 
     private void setup() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        setupCategoriesSelector(ft);
+        setupGame(ft);
         ft.commit();
     }
 
-    private void setupCategoriesSelector(FragmentTransaction ft) {
-        GameFragment mf = GameFragment.newInstance(null);
+    private void setupGame(FragmentTransaction ft) {
+        Bundle bundle = new Bundle();
+        Game game = getIntent().getExtras().getParcelable("game");
+        bundle.putParcelable("game", game);
+        GameFragment mf = GameFragment.newInstance(bundle);
         ft.replace(R.id.flGeneric, mf);
     }
 }

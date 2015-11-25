@@ -5,4 +5,13 @@
     <string name="lblMusic">Music</string>
     <string name="lblGames">Games</string>
     <string name="lblName">Name</string>
+    <string name="lblReleaseDate">Release Date</string>
+    <string name="lblRating">Rating</string>
+    <string name="lblScore">Score</string>
+    <string name="lblUrl">URL</string>
+    <string name="lblCast">Cast</string>
+    <string name="lblGenre">Genre</string>
+    <string name="lblUserScore">User Score</string>
+    <string name="lblRuntime">Runtime</string>
+    <string name="lblAuthor">Author</string>
 </resources>

@@ -1,5 +1,7 @@
 package fantastic3.xcritic.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by jpodlech on 11/24/15.
  */
-public class Game {
+public class Game implements Parcelable {
     private String name;
     private String url;
     private String releaseDate;
@@ -81,4 +83,38 @@ public class Game {
         }
         return game;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeString(this.url);
+        dest.writeString(this.releaseDate);
+        dest.writeString(this.rating);
+        dest.writeString(this.score);
+        dest.writeString(this.thumbnail);
+    }
+
+    protected Game(Parcel in) {
+        this.name = in.readString();
+        this.url = in.readString();
+        this.releaseDate = in.readString();
+        this.rating = in.readString();
+        this.score = in.readString();
+        this.thumbnail = in.readString();
+    }
+
+    public static final Parcelable.Creator<Game> CREATOR = new Parcelable.Creator<Game>() {
+        public Game createFromParcel(Parcel source) {
+            return new Game(source);
+        }
+
+        public Game[] newArray(int size) {
+            return new Game[size];
+        }
+    };
 }

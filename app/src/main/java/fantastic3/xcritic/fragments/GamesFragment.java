@@ -29,6 +29,7 @@ import fantastic3.xcritic.models.Game;
 public class GamesFragment extends Fragment {
     private View view;
     private ListView lvGames;
+    private ArrayList<Game> games;
 
     public static GamesFragment newInstance(Bundle args) {
         GamesFragment instance = new GamesFragment();
@@ -46,13 +47,14 @@ public class GamesFragment extends Fragment {
         MetacriticGames.fetchBy("ps4", null, null, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                ArrayList<Game> games = Game.fromJSONResults(json);
+                games = Game.fromJSONResults(json);
                 GamesAdapter adapter = new GamesAdapter(getContext(), games);
                 lvGames.setAdapter(adapter);
                 lvGames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(getActivity(), GameActivity.class);
+                        i.putExtra("game", games.get(position));
                         getActivity().startActivity(i);
                     }
                 });
