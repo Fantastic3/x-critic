@@ -10,18 +10,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
+import java.util.List;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-import cz.msebera.android.httpclient.Header;
 import fantastic3.xcritic.R;
 import fantastic3.xcritic.activities.MovieActivity;
 import fantastic3.xcritic.adapters.MoviesAdapter;
-import fantastic3.xcritic.clients.v2.metacritic.MetacriticMovies;
+import fantastic3.xcritic.clients.v2.metacritic.ServiceGenerator;
+import fantastic3.xcritic.clients.v2.metacritic.movies.MoviesClient;
+import fantastic3.xcritic.clients.v2.metacritic.movies.NewReleasesResult;
 import fantastic3.xcritic.models.Movie;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * Created by jpodlech on 11/21/15.
@@ -29,7 +29,7 @@ import fantastic3.xcritic.models.Movie;
 public class MoviesFragment extends Fragment {
     private View view;
     private ListView lvMovies;
-    private ArrayList<Movie> movies;
+    private List<Movie> movies;
 
     public static MoviesFragment newInstance(Bundle args) {
         MoviesFragment instance = new MoviesFragment();
@@ -44,10 +44,11 @@ public class MoviesFragment extends Fragment {
         if (savedInstanceState == null) {
             setup();
         }
-        MetacriticMovies.fetchBy(null, null, null, new JsonHttpResponseHandler() {
+        MoviesClient moviesClient = ServiceGenerator.build(getContext().getCacheDir()).createService(MoviesClient.class);
+        moviesClient.newReleases(null).enqueue(new Callback<NewReleasesResult>() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                movies = Movie.fromJSONResults(json);
+            public void onResponse(Response<NewReleasesResult> response, Retrofit retrofit) {
+                movies = response.body().getResults();
                 MoviesAdapter adapter = new MoviesAdapter(getContext(), movies);
                 lvMovies.setAdapter(adapter);
                 lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,6 +59,11 @@ public class MoviesFragment extends Fragment {
                         getActivity().startActivity(i);
                     }
                 });
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
             }
         });
         return view;
