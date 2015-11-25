@@ -19,11 +19,11 @@ public class Movie {
     private String rating;
     private String cast;
     private String genre;
-    private String userscore;
+    private String userScore;
     private String runtime;
     private String thumbnail;
 
-    public Movie(String name, String url, String releaseDate, String score, String rating, String cast, String genre, String userscore, String runtime, String thumbnail) {
+    public Movie(String name, String url, String releaseDate, String score, String rating, String cast, String genre, String userScore, String runtime, String thumbnail) {
         this.name = name;
         this.url = url;
         this.releaseDate = releaseDate;
@@ -31,7 +31,7 @@ public class Movie {
         this.rating = rating;
         this.cast = cast;
         this.genre = genre;
-        this.userscore = userscore;
+        this.userScore = userScore;
         this.runtime = runtime;
         this.thumbnail = thumbnail;
     }
@@ -64,8 +64,8 @@ public class Movie {
         return genre;
     }
 
-    public String getUserscore() {
-        return userscore;
+    public String getUserScore() {
+        return userScore;
     }
 
     public String getRuntime() {
