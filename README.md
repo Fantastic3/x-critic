@@ -4,6 +4,10 @@
 
 Xcritic is an Android app that lets you discover and evaluate movies, tv shows, music and games in just a couple of touches. It uses [Metacritic API](https://www.publicapis.com/byroredux/metacritic).
 
+## Walkthrough
+
+![video walkthrough](x-critic.gif)
+
 ## Setup
 
 - First run the following commands to avoid adding secret credentials into the git repo:
