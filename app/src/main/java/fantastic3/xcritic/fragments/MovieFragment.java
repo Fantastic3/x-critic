@@ -29,8 +29,10 @@ public class MovieFragment extends Fragment {
     private TextView tvGenre;
     private TextView tvScore;
     private TextView tvUserScore;
+    private TextView tvSummary;
     private TextView tvRuntime;
     private TextView tvUrl;
+    private TextView tvDirector;
 
     public static MovieFragment newInstance(Bundle args) {
         MovieFragment instance = new MovieFragment();
@@ -59,8 +61,9 @@ public class MovieFragment extends Fragment {
     }
 
     private void setupViews() {
-        ivThumbnail = (ImageView) view.findViewById(R.id.ivThumbnail);
+        //ivThumbnail = (ImageView) view.findViewById(R.id.ivThumbnail);
         tvName = (TextView) view.findViewById(R.id.tvName);
+        tvSummary = (TextView) view.findViewById(R.id.tvSummary);
         tvReleaseDate = (TextView) view.findViewById(R.id.tvReleaseDate);
         tvRating = (TextView) view.findViewById(R.id.tvRating);
         tvScore = (TextView) view.findViewById(R.id.tvScore);
@@ -68,16 +71,19 @@ public class MovieFragment extends Fragment {
         tvUrl = (TextView) view.findViewById(R.id.tvUrl);
         tvCast = (TextView) view.findViewById(R.id.tvCast);
         tvGenre = (TextView) view.findViewById(R.id.tvGenre);
+        tvDirector = (TextView) view.findViewById(R.id.tvDirector);
         tvRuntime = (TextView) view.findViewById(R.id.tvRuntime);
     }
 
     private void setupContent() {
-        Picasso.with(getContext()).load(movie.getThumbnail()).into(ivThumbnail);
+        //Picasso.with(getContext()).load(movie.getThumbnail()).resize(100, 150).into(ivThumbnail);
         tvName.setText(movie.getName());
         tvReleaseDate.setText(movie.getReleaseDate());
         tvRating.setText(movie.getRating());
         tvScore.setText(movie.getScore());
+        tvSummary.setText(movie.getSummary());
         tvUrl.setText(movie.getUrl());
+        tvDirector.setText(movie.getDirector());
         tvCast.setText(movie.getCast());
         tvGenre.setText(movie.getGenre());
         tvRuntime.setText(movie.getRuntime());
