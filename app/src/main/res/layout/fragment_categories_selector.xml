@@ -24,6 +24,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/lblMovies"
                     android:id="@+id/tvMovies"
+                    android:textColor="#ffffff"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
             </RelativeLayout>
@@ -41,6 +42,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/lblTvShows"
                     android:id="@+id/tvTvShows"
+                    android:textColor="#ffffff"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
             </RelativeLayout>
@@ -64,6 +66,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/lblMusic"
+                    android:textColor="#ffffff"
                     android:id="@+id/tvMusic"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
@@ -81,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/lblGames"
+                    android:textColor="#ffffff"
                     android:id="@+id/tvGames"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
@@ -88,11 +92,4 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/ivLogo"
-        android:src="@mipmap/ic_launcher" />
 </RelativeLayout>

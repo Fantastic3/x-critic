@@ -65,6 +65,7 @@ public class MovieFragment extends Fragment {
         tvName = (TextView) view.findViewById(R.id.tvName);
         tvSummary = (TextView) view.findViewById(R.id.tvSummary);
         tvReleaseDate = (TextView) view.findViewById(R.id.tvReleaseDate);
+        ivThumbnail = (ImageView) view.findViewById(R.id.ivThumbnail);
         tvRating = (TextView) view.findViewById(R.id.tvRating);
         tvScore = (TextView) view.findViewById(R.id.tvScore);
         tvUserScore = (TextView) view.findViewById(R.id.tvUserScore);
@@ -76,7 +77,7 @@ public class MovieFragment extends Fragment {
     }
 
     private void setupContent() {
-        //Picasso.with(getContext()).load(movie.getThumbnail()).resize(100, 150).into(ivThumbnail);
+        Picasso.with(getContext()).load(movie.getThumbnail()).resize(250,250).into(ivThumbnail);
         tvName.setText(movie.getName());
         tvReleaseDate.setText(movie.getReleaseDate());
         tvRating.setText(movie.getRating());

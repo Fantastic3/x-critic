@@ -1,177 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/root_view">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="140dp"
-        android:background="#4CAF50"
-        >
+        android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="30dp"
             android:orientation="vertical"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lblName"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:id="@+id/tvName" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lblGenre"
-                android:textColor="#ffffff"
-                android:textSize="12sp"
-                android:id="@+id/tvGenre"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lblReleaseDate"
-                android:id="@+id/tvReleaseDate"
-                android:background="#727272" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lblReleaseDate"
-                android:id="@+id/tvSummary"
-                android:background="#727272" />
+            android:layout_height="140dp"
+            android:background="#4CAF50"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblName"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:id="@+id/tvName" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblGenre"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
+                    android:id="@+id/tvGenre"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblReleaseDate"
+                    android:id="@+id/tvReleaseDate"
+                    android:background="#727272" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#212121"
+                    android:text="Rating"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#727272"
+                    android:id="@+id/tvRating"
+                    />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#212121"
+                    android:text="Score"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#727272"
+                    android:id="@+id/tvScore"
+                    />
+
+
 
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="20dp"
-        >
-        <TextView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            />
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#212121"
+                    android:text="Director"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#727272"
+                    android:id="@+id/tvDirector"
+                    />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#212121"
+                    android:text="Summary"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#727272"
+                    android:id="@+id/tvSummary"
+                    />
+        </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#212121"
-                android:text="Rating"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#727272"
-                android:id="@+id/tvRating"
-                />
-        </LinearLayout>
+            android:text="@string/lblUrl"
+            android:id="@+id/tvUrl"
+         />
 
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="20dp"
-        >
         <TextView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            />
-        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#212121"
-                android:text="Score"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#727272"
-                android:id="@+id/tvScore"
-                />
-        </LinearLayout>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="20dp"
-        >
-        <TextView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:text="@string/lblCast"
+            android:background="#4CAF50"
+            android:id="@+id/tvCast"
             />
-        <LinearLayout
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#212121"
-                android:text="Director"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#727272"
-                android:id="@+id/tvSummary"
-                />
-        </LinearLayout>
+            android:text="@string/lblUserScore"
+            android:id="@+id/tvUserScore"
+         />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lblRuntime"
+            android:id="@+id/tvRuntime"
+          />
 
     </LinearLayout>
-    <View
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#000000" />
-    <TextView
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lblUrl"
-        android:id="@+id/tvUrl"
-     />
+        android:id="@+id/ivThumbnail"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lblCast"
-        android:background="#4CAF50"
-        android:id="@+id/tvCast"
+        android:layout_marginRight="30dp"
+        android:layout_gravity="center|right"
         />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lblUserScore"
-        android:id="@+id/tvUserScore"
-     />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lblUserScore"
-        android:id="@+id/tvDirector"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lblRuntime"
-        android:id="@+id/tvRuntime"
-      />
-</LinearLayout>
+</FrameLayout>

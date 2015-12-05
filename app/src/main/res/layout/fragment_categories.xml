@@ -22,7 +22,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        app:pstsIndicatorColor="@android:color/white"
         app:pstsDividerColor="@android:color/transparent"
         app:pstsUnderlineColor="@android:color/black"
 

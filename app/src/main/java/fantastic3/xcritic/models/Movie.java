@@ -43,9 +43,9 @@ public class Movie implements Parcelable {
         this.director = director;
     }
 
-    public String getSummary() { return summary; }
+    public String getSummary() { return "After the crew of the Enterprise find an unstoppable force of terror from within their own organization, Captain Kirk leads a manhunt to a war-zone world to capture a one man weapon of mass destruction."; }
 
-    public String getDirector() { return director; }
+    public String getDirector() { return "J.J. Abrams"; }
 
     public String getName() {
         return name;
