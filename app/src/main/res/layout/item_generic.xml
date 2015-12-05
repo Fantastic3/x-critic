@@ -16,10 +16,21 @@
         android:layout_height="wrap_content"
         android:text="@string/lblName"
         android:id="@+id/tvName"
-        android:layout_toRightOf="@+id/ivThumbnail"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignBottom="@+id/ivThumbnail"
         android:layout_alignParentTop="true"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_toLeftOf="@+id/ivFavorite"
+        android:layout_toStartOf="@+id/ivFavorite"
+        android:layout_toRightOf="@+id/ivThumbnail"
+        android:layout_toEndOf="@+id/ivThumbnail" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivFavorite"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_favorite"
+        android:layout_alignBottom="@+id/tvName" />
 </RelativeLayout>
