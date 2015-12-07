@@ -6,19 +6,19 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import fantastic3.xcritic.R;
-import fantastic3.xcritic.fragments.CategoriesSelectorFragment;
+import fantastic3.xcritic.fragments.FavoritesFragment;
 
 /**
- * Created by jpodlech on 11/20/15.
+ * Created by jpodlech on 12/7/15.
  */
-public class WelcomeActivity extends AppCompatActivity {
-
+public class FavoritesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_favorites);
         if (savedInstanceState == null) {
             setup();
+            getSupportActionBar();
         }
     }
 
@@ -30,8 +30,8 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void setupCategoriesSelector(FragmentTransaction ft) {
-        CategoriesSelectorFragment csf = CategoriesSelectorFragment.newInstance(null);
-        ft.replace(R.id.flCategoriesSelector, csf);
+        FavoritesFragment csf = FavoritesFragment.newInstance(null);
+        ft.replace(R.id.flFavorites, csf);
     }
 
     private void setupMenu() {
@@ -39,5 +39,7 @@ public class WelcomeActivity extends AppCompatActivity {
         actionBar.setLogo(R.mipmap.ic_launcher);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        setTitle(R.string.lblFavorites);
     }
 }

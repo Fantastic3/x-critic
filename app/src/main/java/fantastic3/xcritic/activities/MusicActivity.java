@@ -2,6 +2,7 @@ package fantastic3.xcritic.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import fantastic3.xcritic.R;
@@ -23,6 +24,7 @@ public class MusicActivity extends AppCompatActivity {
     }
 
     private void setup() {
+        setupMenu();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         setupMusic(ft);
         ft.commit();
@@ -34,5 +36,13 @@ public class MusicActivity extends AppCompatActivity {
         bundle.putParcelable("music", music);
         MusicFragment mf = MusicFragment.newInstance(bundle);
         ft.replace(R.id.flGeneric, mf);
+    }
+
+    private void setupMenu() {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setLogo(R.mipmap.ic_launcher);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

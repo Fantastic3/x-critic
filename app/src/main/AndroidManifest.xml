@@ -17,10 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.CategoriesActivity"/>
-        <activity android:name=".activities.GameActivity"/>
-        <activity android:name=".activities.MovieActivity"/>
-        <activity android:name=".activities.MusicActivity"/>
-
+        <activity android:name=".activities.GameActivity" android:parentActivityName=".activities.CategoriesActivity"/>
+        <activity android:name=".activities.MovieActivity" android:parentActivityName=".activities.CategoriesActivity"/>
+        <activity android:name=".activities.MusicActivity" android:parentActivityName=".activities.CategoriesActivity"/>
+        <activity android:name=".activities.FavoritesActivity" android:parentActivityName=".activities.CategoriesActivity"/>
     </application>
 
 </manifest>

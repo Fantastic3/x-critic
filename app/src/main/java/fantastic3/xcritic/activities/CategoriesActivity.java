@@ -1,7 +1,9 @@
 package fantastic3.xcritic.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +26,7 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     private void setup() {
+        setupMenu();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         setupCategoriesSelector(ft);
         ft.commit();
@@ -34,13 +37,21 @@ public class CategoriesActivity extends AppCompatActivity {
         ft.replace(R.id.flCategories, cf);
     }
 
+    private void setupMenu() {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setLogo(R.mipmap.ic_launcher);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.categories, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-
     public void onFavorites(MenuItem item) {
+        Intent i = new Intent(this, FavoritesActivity.class);
+        startActivity(i);
     }
 }

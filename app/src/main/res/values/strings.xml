@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Xcritic</string>
+    <string name="app_name">Critic</string>
     <string name="lblMovies">Movies</string>
     <string name="lblTvShows">TV Shows</string>
     <string name="lblMusic">Music</string>
@@ -15,4 +15,5 @@
     <string name="lblRuntime">Runtime</string>
     <string name="lblAuthor">Author</string>
     <string name="lblComingSoon">Coming soon...</string>
+    <string name="lblFavorites">Favorites</string>
 </resources>
