@@ -10,14 +10,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fantastic3.xcritic.R;
 import fantastic3.xcritic.activities.MovieActivity;
-import fantastic3.xcritic.adapters.MoviesAdapter;
+import fantastic3.xcritic.adapters.ListItemAdapter;
 import fantastic3.xcritic.clients.v2.metacritic.ServiceGenerator;
 import fantastic3.xcritic.clients.v2.metacritic.movies.MoviesClient;
 import fantastic3.xcritic.clients.v2.metacritic.movies.NewReleasesResult;
+import fantastic3.xcritic.interfaces.ListItemable;
 import fantastic3.xcritic.models.Movie;
 import retrofit.Callback;
 import retrofit.Response;
@@ -29,7 +31,7 @@ import retrofit.Retrofit;
 public class MoviesFragment extends Fragment {
     private View view;
     private ListView lvMovies;
-    private List<Movie> movies;
+    private List<ListItemable> items;
 
     public static MoviesFragment newInstance(Bundle args) {
         MoviesFragment instance = new MoviesFragment();
@@ -48,14 +50,15 @@ public class MoviesFragment extends Fragment {
         moviesClient.newReleases(null).enqueue(new Callback<NewReleasesResult>() {
             @Override
             public void onResponse(Response<NewReleasesResult> response, Retrofit retrofit) {
-                movies = response.body().getResults();
-                MoviesAdapter adapter = new MoviesAdapter(getContext(), movies);
+                items = new ArrayList<ListItemable>();
+                items.addAll(response.body().getResults());
+                ListItemAdapter adapter = new ListItemAdapter(getContext(), items);
                 lvMovies.setAdapter(adapter);
                 lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(getActivity(), MovieActivity.class);
-                        i.putExtra("movie", movies.get(position));
+                        i.putExtra("movie", (Movie) items.get(position));
                         getActivity().startActivity(i);
                     }
                 });

@@ -107,12 +107,9 @@ public class CategoriesFragment extends Fragment {
                 tabsStrip.setBackgroundColor(getResources().getColor(R.color.colorMovies));
                 break;
             case 1:
-                tabsStrip.setBackgroundColor(getResources().getColor(R.color.colorTvShows));
-                break;
-            case 2:
                 tabsStrip.setBackgroundColor(getResources().getColor(R.color.colorMusic));
                 break;
-            case 3:
+            case 2:
                 tabsStrip.setBackgroundColor(getResources().getColor(R.color.colorGames));
                 break;
         }

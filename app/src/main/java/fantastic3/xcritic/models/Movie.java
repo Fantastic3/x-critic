@@ -10,10 +10,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import fantastic3.xcritic.interfaces.ListItemable;
+
 /**
  * Created by jpodlech on 11/23/15.
  */
-public class Movie implements Parcelable {
+public class Movie implements Parcelable, ListItemable {
     private String name;
     private String url;
     private String releaseDate;

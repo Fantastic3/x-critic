@@ -10,10 +10,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import fantastic3.xcritic.interfaces.ListItemable;
+
 /**
  * Created by jpodlech on 11/24/15.
  */
-public class Music implements Parcelable {
+public class Music implements Parcelable, ListItemable {
     private String author;
     private String name;
     private String url;

@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#CCC</color>
     <color name="colorAccent">#FFF</color>
     <color name="colorMovies">#4CAF50</color>
-    <color name="colorTvShows">#D32F2F</color>
+    <color name="colorTvShows">#000</color>
     <color name="colorMusic">#FF4081</color>
     <color name="colorGames">#03A9F4</color>
 </resources>

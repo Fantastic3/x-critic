@@ -15,12 +15,14 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import fantastic3.xcritic.R;
 import fantastic3.xcritic.activities.MusicActivity;
-import fantastic3.xcritic.adapters.MusicsAdapter;
+import fantastic3.xcritic.adapters.ListItemAdapter;
 import fantastic3.xcritic.clients.v2.metacritic.MetacriticMusic;
+import fantastic3.xcritic.interfaces.ListItemable;
 import fantastic3.xcritic.models.Music;
 
 /**
@@ -29,7 +31,7 @@ import fantastic3.xcritic.models.Music;
 public class MusicsFragment extends Fragment {
     private View view;
     private ListView lvMusics;
-    private ArrayList<Music> musics;
+    private List<ListItemable> items;
 
     public static MusicsFragment newInstance(Bundle args) {
         MusicsFragment instance = new MusicsFragment();
@@ -47,14 +49,15 @@ public class MusicsFragment extends Fragment {
         MetacriticMusic.fetchBy(null, null, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                musics = Music.fromJSONResults(json);
-                MusicsAdapter adapter = new MusicsAdapter(getContext(), musics);
+                items = new ArrayList<ListItemable>();
+                items.addAll(Music.fromJSONResults(json));
+                ListItemAdapter adapter = new ListItemAdapter(getContext(), items);
                 lvMusics.setAdapter(adapter);
                 lvMusics.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(getActivity(), MusicActivity.class);
-                        i.putExtra("music", musics.get(position));
+                        i.putExtra("music", (Music) items.get(position));
                         getActivity().startActivity(i);
                     }
                 });

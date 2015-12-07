@@ -26,7 +26,8 @@
                     android:id="@+id/tvMovies"
                     android:textColor="#ffffff"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="0dp"
@@ -44,7 +45,8 @@
                     android:id="@+id/tvTvShows"
                     android:textColor="#ffffff"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -69,7 +71,8 @@
                     android:textColor="#ffffff"
                     android:id="@+id/tvMusic"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="0dp"
@@ -87,7 +90,8 @@
                     android:textColor="#ffffff"
                     android:id="@+id/tvGames"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

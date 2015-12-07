@@ -15,12 +15,14 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import fantastic3.xcritic.R;
 import fantastic3.xcritic.activities.GameActivity;
-import fantastic3.xcritic.adapters.GamesAdapter;
+import fantastic3.xcritic.adapters.ListItemAdapter;
 import fantastic3.xcritic.clients.v2.metacritic.MetacriticGames;
+import fantastic3.xcritic.interfaces.ListItemable;
 import fantastic3.xcritic.models.Game;
 
 /**
@@ -29,7 +31,7 @@ import fantastic3.xcritic.models.Game;
 public class GamesFragment extends Fragment {
     private View view;
     private ListView lvGames;
-    private ArrayList<Game> games;
+    private List<ListItemable> items;
 
     public static GamesFragment newInstance(Bundle args) {
         GamesFragment instance = new GamesFragment();
@@ -47,14 +49,15 @@ public class GamesFragment extends Fragment {
         MetacriticGames.fetchBy("ps4", null, null, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                games = Game.fromJSONResults(json);
-                GamesAdapter adapter = new GamesAdapter(getContext(), games);
+                items = new ArrayList<ListItemable>();
+                items.addAll(Game.fromJSONResults(json));
+                ListItemAdapter adapter = new ListItemAdapter(getContext(), items);
                 lvGames.setAdapter(adapter);
                 lvGames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent i = new Intent(getActivity(), GameActivity.class);
-                        i.putExtra("game", games.get(position));
+                        i.putExtra("game", (Game) items.get(position));
                         getActivity().startActivity(i);
                     }
                 });

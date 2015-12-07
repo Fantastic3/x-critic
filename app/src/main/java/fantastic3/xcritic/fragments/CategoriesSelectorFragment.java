@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import fantastic3.xcritic.R;
+import fantastic3.xcritic.XcriticApplication;
 import fantastic3.xcritic.activities.CategoriesActivity;
 import fantastic3.xcritic.adapters.CategoriesFragmentPagerAdapter;
 
@@ -63,7 +65,11 @@ public class CategoriesSelectorFragment extends Fragment {
         llTvShows.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForCategory(CategoriesFragment.ID_TV_SHOWS);
+                Toast.makeText(
+                        XcriticApplication.getContext(),
+                        XcriticApplication.getContext().getText(R.string.lblComingSoon).toString(),
+                        Toast.LENGTH_SHORT
+                ).show();
             }
         });
         llMusic.setOnClickListener(new View.OnClickListener() {
