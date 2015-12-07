@@ -40,6 +40,7 @@ public class Game implements Parcelable, ListItemable {
         return url;
     }
 
+
     public String getReleaseDate() {
         return releaseDate;
     }

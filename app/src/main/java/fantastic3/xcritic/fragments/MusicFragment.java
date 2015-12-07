@@ -67,7 +67,7 @@ public class MusicFragment extends Fragment {
     }
 
     private void setupContent() {
-        Picasso.with(getContext()).load(music.getThumbnail()).into(ivThumbnail);
+        Picasso.with(getContext()).load(music.getThumbnail()).resize(250, 250).into(ivThumbnail);
         tvName.setText(music.getName());
         tvAuthor.setText(music.getAuthor());
         tvReleaseDate.setText(music.getReleaseDate());

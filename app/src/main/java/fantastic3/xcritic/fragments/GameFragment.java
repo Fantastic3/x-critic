@@ -63,7 +63,7 @@ public class GameFragment extends Fragment {
     }
 
     private void setupContent() {
-        Picasso.with(getContext()).load(game.getThumbnail()).into(ivThumbnail);
+        Picasso.with(getContext()).load(game.getThumbnail()).resize(250, 250).into(ivThumbnail);
         tvName.setText(game.getName());
         tvReleaseDate.setText(game.getReleaseDate());
         tvRating.setText(game.getRating());

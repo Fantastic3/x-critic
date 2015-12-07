@@ -68,6 +68,7 @@ public class CategoriesFragment extends Fragment {
     private void setupViews() {
         pager = (ViewPager) view.findViewById(R.id.pager);
         tabsStrip = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
+        tabsStrip.setTextColorResource(R.color.colorWhite);
     }
 
     private void setupAdapters() {
