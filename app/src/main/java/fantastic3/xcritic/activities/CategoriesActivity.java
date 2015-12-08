@@ -3,8 +3,10 @@ package fantastic3.xcritic.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -47,6 +49,20 @@ public class CategoriesActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.categories, menu);
+        MenuItem miSearch = menu.findItem(R.id.miSearch);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(miSearch);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // TODO: search movies, musics or games.
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
 
