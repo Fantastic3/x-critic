@@ -75,5 +75,6 @@ public class MusicsFragment extends Fragment {
     }
 
     public void onQueryTextSubmit(String query) {
+
     }
 }

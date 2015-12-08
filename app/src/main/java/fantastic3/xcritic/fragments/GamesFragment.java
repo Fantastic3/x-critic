@@ -75,5 +75,6 @@ public class GamesFragment extends Fragment {
     }
 
     public void onQueryTextSubmit(String query) {
+
     }
 }
