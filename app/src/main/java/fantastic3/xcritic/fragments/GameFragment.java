@@ -68,6 +68,6 @@ public class GameFragment extends Fragment {
         tvReleaseDate.setText(game.getReleaseDate());
         tvRating.setText(game.getRating());
         tvScore.setText(game.getScore());
-        tvUrl.setText(game.getUrl());
+        //tvUrl.setText(game.getUrl());
     }
 }

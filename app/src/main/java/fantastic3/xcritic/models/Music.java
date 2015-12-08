@@ -8,6 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import fantastic3.xcritic.interfaces.ListItemable;
@@ -49,7 +51,14 @@ public class Music implements Parcelable, ListItemable {
     }
 
     public String getReleaseDate() {
-        return releaseDate;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-MM");
+        SimpleDateFormat dateStr = new SimpleDateFormat("d MMM yyyy");
+        try {
+            return dateStr.format(sdf.parse(this.releaseDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     public String getScore() {

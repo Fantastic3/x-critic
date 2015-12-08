@@ -83,7 +83,7 @@ public class MovieFragment extends Fragment {
         tvRating.setText(movie.getRating());
         tvScore.setText(movie.getScore());
         tvSummary.setText(movie.getSummary());
-        tvUrl.setText(movie.getUrl());
+        //tvUrl.setText(movie.getUrl());
         tvDirector.setText(movie.getDirector());
         tvCast.setText(movie.getCast());
         tvGenre.setText(movie.getGenre());
