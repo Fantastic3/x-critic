@@ -1,5 +1,6 @@
 package fantastic3.xcritic.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -121,17 +121,17 @@ public class CategoriesFragment extends Fragment {
         }
     }
 
-    public void onQueryTextSubmit(String query) {
+    public void onQueryTextSubmit(String query, Context context) {
         switch(selectedTabId) {
             case 1:
-                ((MusicsFragment) adapter.getItem(selectedTabId)).onQueryTextSubmit(query);
+                ((MusicsFragment) adapter.getItem(selectedTabId)).onQueryTextSubmit(query, context);
                 break;
             case 2:
-                ((GamesFragment) adapter.getItem(selectedTabId)).onQueryTextSubmit(query);
+                ((GamesFragment) adapter.getItem(selectedTabId)).onQueryTextSubmit(query, context);
                 break;
             case 0:
             default:
-                ((MoviesFragment) adapter.getItem(selectedTabId)).onQueryTextSubmit(query);
+                ((MoviesFragment) adapter.getItem(selectedTabId)).onQueryTextSubmit(query, context);
                 break;
         }
     }

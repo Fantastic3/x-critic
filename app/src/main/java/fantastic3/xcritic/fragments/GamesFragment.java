@@ -1,9 +1,11 @@
 package fantastic3.xcritic.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +31,11 @@ import fantastic3.xcritic.models.Game;
  * Created by jpodlech on 11/21/15.
  */
 public class GamesFragment extends Fragment {
-    private View view;
-    private ListView lvGames;
-    private List<ListItemable> items;
+    private static View view;
+    private static ListView lvGames;
+    private static List<ListItemable> items;
+    private static ListItemAdapter adapter;
+    private static Context ctx;
 
     public static GamesFragment newInstance(Bundle args) {
         GamesFragment instance = new GamesFragment();
@@ -51,7 +55,7 @@ public class GamesFragment extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
                 items = new ArrayList<ListItemable>();
                 items.addAll(Game.fromJSONResults(json));
-                ListItemAdapter adapter = new ListItemAdapter(getContext(), items);
+                adapter = new ListItemAdapter(getContext(), items);
                 lvGames.setAdapter(adapter);
                 lvGames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -74,7 +78,19 @@ public class GamesFragment extends Fragment {
         lvGames = (ListView) view.findViewById(R.id.lvGames);
     }
 
-    public void onQueryTextSubmit(String query) {
-
+    public void onQueryTextSubmit(String query, Context context) {
+        ctx = context;
+        MetacriticGames.searchBy(query, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
+                Log.i("json", json.toString());
+                items = new ArrayList<ListItemable>();
+                items.addAll(Game.fromJSONResults(json));
+                adapter.clear();
+                adapter.notifyDataSetChanged();
+                adapter.addAll(items);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 }

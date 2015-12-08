@@ -56,7 +56,7 @@ public class CategoriesActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                cf.onQueryTextSubmit(query);
+                cf.onQueryTextSubmit(query, getApplicationContext());
                 return true;
             }
 

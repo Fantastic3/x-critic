@@ -1,9 +1,11 @@
 package fantastic3.xcritic.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +31,11 @@ import fantastic3.xcritic.models.Music;
  * Created by jpodlech on 11/21/15.
  */
 public class MusicsFragment extends Fragment {
-    private View view;
-    private ListView lvMusics;
-    private List<ListItemable> items;
+    private static View view;
+    private static ListView lvMusics;
+    private static List<ListItemable> items;
+    private static Context ctx;
+    private static ListItemAdapter adapter;
 
     public static MusicsFragment newInstance(Bundle args) {
         MusicsFragment instance = new MusicsFragment();
@@ -51,7 +55,7 @@ public class MusicsFragment extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
                 items = new ArrayList<ListItemable>();
                 items.addAll(Music.fromJSONResults(json));
-                ListItemAdapter adapter = new ListItemAdapter(getContext(), items);
+                adapter = new ListItemAdapter(getContext(), items);
                 lvMusics.setAdapter(adapter);
                 lvMusics.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -74,7 +78,19 @@ public class MusicsFragment extends Fragment {
         lvMusics = (ListView) view.findViewById(R.id.lvMusic);
     }
 
-    public void onQueryTextSubmit(String query) {
-
+    public void onQueryTextSubmit(String query, Context context) {
+        ctx = context;
+        MetacriticMusic.searchBy(query, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
+                Log.i("json", json.toString());
+                items = new ArrayList<ListItemable>();
+                items.addAll(Music.fromJSONResults(json));
+                adapter.clear();
+                adapter.notifyDataSetChanged();
+                adapter.addAll(items);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 }
