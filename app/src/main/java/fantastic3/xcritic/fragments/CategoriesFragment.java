@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -29,7 +30,8 @@ public class CategoriesFragment extends Fragment {
     private ViewPager pager;
     private PagerSlidingTabStrip tabsStrip;
     private Intent i;
-    private Integer selectedTabId;
+    private CategoriesFragmentPagerAdapter adapter;
+    private static Integer selectedTabId;
 
     public static CategoriesFragment newInstance(Bundle args) {
         CategoriesFragment instance = new CategoriesFragment();
@@ -72,7 +74,8 @@ public class CategoriesFragment extends Fragment {
     }
 
     private void setupAdapters() {
-        pager.setAdapter(new CategoriesFragmentPagerAdapter(getActivity().getSupportFragmentManager()));
+        adapter = new CategoriesFragmentPagerAdapter(getActivity().getSupportFragmentManager());
+        pager.setAdapter(adapter);
         tabsStrip.setViewPager(pager);
     }
 
@@ -84,6 +87,7 @@ public class CategoriesFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
+                selectedTabId = position;
                 setTabBackground(position);
             }
 
@@ -94,9 +98,10 @@ public class CategoriesFragment extends Fragment {
     }
 
     private void setupTab() {
+        Integer previousTabId = (selectedTabId == null) ? DEFAULT_TAB_ID: selectedTabId;
         selectedTabId = i.getIntExtra(
                 ID_TAB_ID,
-                DEFAULT_TAB_ID
+                previousTabId
         );
         pager.setCurrentItem(selectedTabId);
         setTabBackground(selectedTabId);
@@ -112,6 +117,21 @@ public class CategoriesFragment extends Fragment {
                 break;
             case 2:
                 tabsStrip.setBackgroundColor(getResources().getColor(R.color.colorGames));
+                break;
+        }
+    }
+
+    public void onQueryTextSubmit(String query) {
+        switch(selectedTabId) {
+            case 1:
+                ((MusicsFragment) adapter.getItem(selectedTabId)).onQueryTextSubmit(query);
+                break;
+            case 2:
+                ((GamesFragment) adapter.getItem(selectedTabId)).onQueryTextSubmit(query);
+                break;
+            case 0:
+            default:
+                ((MoviesFragment) adapter.getItem(selectedTabId)).onQueryTextSubmit(query);
                 break;
         }
     }

@@ -79,4 +79,7 @@ public class MoviesFragment extends Fragment {
     private void setupViews() {
         lvMovies = (ListView) view.findViewById(R.id.lvMovies);
     }
+
+    public void onQueryTextSubmit(String query) {
+    }
 }

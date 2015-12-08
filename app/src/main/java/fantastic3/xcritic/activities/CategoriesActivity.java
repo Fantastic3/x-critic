@@ -17,6 +17,8 @@ import fantastic3.xcritic.fragments.CategoriesFragment;
  * Created by jpodlech on 11/21/15.
  */
 public class CategoriesActivity extends AppCompatActivity {
+    private CategoriesFragment cf;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,7 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     private void setupCategoriesSelector(FragmentTransaction ft) {
-        CategoriesFragment cf = CategoriesFragment.newInstance(null);
+        cf = CategoriesFragment.newInstance(null);
         ft.replace(R.id.flCategories, cf);
     }
 
@@ -54,7 +56,7 @@ public class CategoriesActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // TODO: search movies, musics or games.
+                cf.onQueryTextSubmit(query);
                 return true;
             }
 

@@ -73,4 +73,7 @@ public class GamesFragment extends Fragment {
     private void setupViews() {
         lvGames = (ListView) view.findViewById(R.id.lvGames);
     }
+
+    public void onQueryTextSubmit(String query) {
+    }
 }

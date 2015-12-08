@@ -73,4 +73,7 @@ public class MusicsFragment extends Fragment {
     private void setupViews() {
         lvMusics = (ListView) view.findViewById(R.id.lvMusic);
     }
+
+    public void onQueryTextSubmit(String query) {
+    }
 }
