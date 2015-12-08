@@ -100,7 +100,13 @@ public class Music implements Parcelable, ListItemable {
             String score = json.getString("score");
             String userscore = json.getString("avguserscore");
             String genre = json.getString("genre");
-            String thumbnail = json.getString("thumbnail");
+            String thumbnail;
+            if(!json.isNull("thumbnail")){
+                thumbnail = json.getString("thumbnail");
+            }
+            else{
+                thumbnail = "http://www.solarmonitor.org/common_files/NoData/thumb/swap_00174_thumb.png";
+            }
             music = new Music(author, name, url, releaseDate, score, userscore, genre, thumbnail);
         } catch (JSONException e) {
             Log.e("M.fromJSONObject", e.getStackTrace().toString());

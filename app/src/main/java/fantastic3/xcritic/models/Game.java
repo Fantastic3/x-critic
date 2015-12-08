@@ -88,7 +88,13 @@ public class Game implements Parcelable, ListItemable {
             String releaseDate = json.getString("rlsdate");
             String rating = json.getString("rating");
             String score = json.getString("score");
-            String thumbnail = json.getString("thumbnail");
+            String thumbnail;
+            if(!json.isNull("thumbnail")){
+                thumbnail = json.getString("thumbnail");
+            }
+            else{
+                thumbnail = "http://www.solarmonitor.org/common_files/NoData/thumb/swap_00174_thumb.png";
+            }
             game = new Game(name, url, releaseDate, rating, score, thumbnail);
         } catch (JSONException e) {
             Log.e("G.fromJSONObject", e.getStackTrace().toString());

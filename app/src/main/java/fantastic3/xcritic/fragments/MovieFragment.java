@@ -79,7 +79,7 @@ public class MovieFragment extends Fragment {
     private void setupContent() {
         Picasso.with(getContext()).load(movie.getThumbnail()).resize(250,250).into(ivThumbnail);
         tvName.setText(movie.getName());
-        tvReleaseDate.setText(movie.getReleaseDate());
+        //tvReleaseDate.setText(movie.getReleaseDate());
         tvRating.setText(movie.getRating());
         tvScore.setText(movie.getScore());
         tvSummary.setText(movie.getSummary());

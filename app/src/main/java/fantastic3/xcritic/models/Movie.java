@@ -24,13 +24,13 @@ public class Movie implements Parcelable, ListItemable {
     private String cast;
     private String genre;
     private String userScore;
-    private String director;
+    private String director = "";
     private String runtime;
     private String thumbnail;
 
     private String summary;
 
-    public Movie(String name, String url, String releaseDate, String score, String rating, String cast, String genre, String userScore, String runtime, String thumbnail, String summary, String director) {
+    public Movie(String name, String url, String releaseDate, String score, String rating, String cast, String genre, String userScore, String runtime, String thumbnail, String summary) {
         this.name = name;
         this.url = url;
         this.releaseDate = releaseDate;
@@ -42,7 +42,6 @@ public class Movie implements Parcelable, ListItemable {
         this.runtime = runtime;
         this.thumbnail = thumbnail;
         this.summary = summary;
-        this.director = director;
     }
 
     public String getSummary() { return "After the crew of the Enterprise find an unstoppable force of terror from within their own organization, Captain Kirk leads a manhunt to a war-zone world to capture a one man weapon of mass destruction."; }
@@ -111,13 +110,20 @@ public class Movie implements Parcelable, ListItemable {
             String releaseDate = json.getString("rlsdate");
             String score = json.getString("score");
             String rating = json.getString("rating");
-            String director = json.getString("director");
+            //String director = json.getString("director");
             String cast = json.getString("cast");
             String genre = json.getString("genre");
             String userscore = json.getString("avguserscore");
             String runtime = json.getString("runtime");
-            String thumbnail = json.getString("thumbnail");
-            movie = new Movie(name, url, releaseDate, score, rating, cast, genre, userscore, runtime, thumbnail, summary, director);
+            String thumbnail;
+            if(!json.isNull("thumbnail")){
+                thumbnail = json.getString("thumbnail");
+            }
+            else{
+                thumbnail = "http://www.solarmonitor.org/common_files/NoData/thumb/swap_00174_thumb.png";
+            }
+
+            movie = new Movie(name, url, releaseDate, score, rating, cast, genre, userscore, runtime, thumbnail, summary);
         } catch (JSONException e) {
             Log.e("M.fromJSONObject", e.getStackTrace().toString());
         }

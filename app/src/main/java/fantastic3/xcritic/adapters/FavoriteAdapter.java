@@ -47,7 +47,7 @@ public class FavoriteAdapter extends ArrayAdapter<ListItemable> {
             viewHolder =  (ViewHolder) convertView.getTag();
         }
 
-        if (listItem.getThumbnail() != null) Picasso.with(getContext()).load(listItem.getThumbnail()).into(viewHolder.ivThumbnail);
+        if (listItem.getThumbnail() != null) Picasso.with(getContext()).load(listItem.getThumbnail()).resize(65,65).into(viewHolder.ivThumbnail);
         if (listItem.getName() != null) viewHolder.tvName.setText(listItem.getName());
 
         return convertView;

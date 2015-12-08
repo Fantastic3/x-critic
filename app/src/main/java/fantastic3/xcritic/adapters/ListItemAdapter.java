@@ -53,7 +53,7 @@ public class ListItemAdapter extends ArrayAdapter<ListItemable> {
 
         if (listItem != null) {
             if (listItem.getThumbnail() != null)
-                Picasso.with(ctx).load(listItem.getThumbnail()).into(viewHolder.ivThumbnail);
+                Picasso.with(ctx).load(listItem.getThumbnail()).resize(65,65).into(viewHolder.ivThumbnail);
             if (listItem.getName() != null) viewHolder.tvName.setText(listItem.getName());
             viewHolder.ivFavorite.setOnClickListener(new View.OnClickListener() {
                 @Override
