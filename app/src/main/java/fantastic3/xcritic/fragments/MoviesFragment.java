@@ -81,5 +81,6 @@ public class MoviesFragment extends Fragment {
     }
 
     public void onQueryTextSubmit(String query) {
+
     }
 }
